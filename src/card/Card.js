@@ -112,6 +112,7 @@ const Card = props => {
 };
 
 Card.propTypes = {
+  component: PropTypes.any,
   children: PropTypes.any,
   flexDirection: PropTypes.string,
   containerStyle: ViewPropTypes.style,

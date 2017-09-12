@@ -132,6 +132,7 @@ const Tile = props => {
 };
 
 Tile.propTypes = {
+  component: PropTypes.any,
   title: PropTypes.string,
   icon: PropTypes.object,
   caption: PropTypes.string,

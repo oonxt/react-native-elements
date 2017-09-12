@@ -119,6 +119,7 @@ const FeaturedTile = props => {
 };
 
 FeaturedTile.propTypes = {
+  component: PropTypes.any,
   title: PropTypes.string,
   icon: PropTypes.object,
   caption: PropTypes.string,
