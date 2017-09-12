@@ -17,6 +17,7 @@ import BackgroundImage from '../config/BackgroundImage';
 
 const Card = props => {
   const {
+    component,
     children,
     flexDirection,
     containerStyle,
@@ -35,7 +36,7 @@ const Card = props => {
     fontFamily,
     ...attributes
   } = props;
-
+  let Image = component || BackgroundImage;
   return (
     <View
       style={[
@@ -71,10 +72,11 @@ const Card = props => {
           </View>}
         {image &&
           <View style={imageWrapperStyle && imageWrapperStyle}>
-            <BackgroundImage
+            <Image
               resizeMode="cover"
               style={[{ width: null, height: 150 }, imageStyle && imageStyle]}
               source={image}
+              {...attributes}
             >
               <View
                 style={[styles.overlayContainer, overlayStyle && overlayStyle]}
@@ -98,7 +100,7 @@ const Card = props => {
                     {featuredSubtitle}
                   </Text>}
               </View>
-            </BackgroundImage>
+            </Image>
             <View style={[{ padding: 10 }, wrapperStyle && wrapperStyle]}>
               {children}
             </View>

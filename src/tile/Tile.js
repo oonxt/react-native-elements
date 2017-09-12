@@ -16,6 +16,7 @@ import BackgroundImage from '../config/BackgroundImage';
 
 const Tile = props => {
   const {
+    component,
     featured,
     imageSrc,
     icon,
@@ -33,7 +34,7 @@ const Tile = props => {
     contentContainerStyle,
     ...attributes
   } = props;
-
+  let Image = component || BackgroundImage;
   let { width, height } = props;
 
   if (!width) {
@@ -98,12 +99,13 @@ const Tile = props => {
       style={[styles.container, containerStyle && containerStyle]}
       {...attributes}
     >
-      <BackgroundImage
+      <Image
         source={imageSrc}
         style={[
           styles.imageContainer,
           imageContainerStyle && imageContainerStyle,
         ]}
+        {...attributes}
       >
         <View
           style={[
@@ -113,7 +115,7 @@ const Tile = props => {
         >
           {icon && <Icon {...icon} />}
         </View>
-      </BackgroundImage>
+      </Image>
       <View
         style={[
           styles.contentContainer,

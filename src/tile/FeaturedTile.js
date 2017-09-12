@@ -4,16 +4,17 @@ import {
   TouchableOpacity,
   Text as NativeText,
   View,
-  Image,
   StyleSheet,
   Dimensions,
 } from 'react-native';
 import Text from '../text/Text';
 import Icon from '../icons/Icon';
 import ViewPropTypes from '../config/ViewPropTypes';
+import BackgroundImage from "../config/BackgroundImage";
 
 const FeaturedTile = props => {
   const {
+    component,
     title,
     icon,
     caption,
@@ -26,7 +27,7 @@ const FeaturedTile = props => {
     captionStyle,
     ...attributes
   } = props;
-
+  let Image = component || BackgroundImage;
   let { width, height } = props;
 
   if (!width) {
@@ -89,6 +90,7 @@ const FeaturedTile = props => {
           styles.imageContainer,
           imageContainerStyle && imageContainerStyle,
         ]}
+        {...attributes}
       >
         <View
           style={[
