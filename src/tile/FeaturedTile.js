@@ -6,6 +6,7 @@ import {
   View,
   StyleSheet,
   Dimensions,
+  Image as NativeImage
 } from 'react-native';
 import Text from '../text/Text';
 import Icon from '../icons/Icon';
@@ -123,7 +124,7 @@ FeaturedTile.propTypes = {
   title: PropTypes.string,
   icon: PropTypes.object,
   caption: PropTypes.string,
-  imageSrc: Image.propTypes.source.isRequired,
+  imageSrc: NativeImage.propTypes.source.isRequired,
   onPress: PropTypes.func,
   containerStyle: ViewPropTypes.style,
   iconContainerStyle: ViewPropTypes.style,
