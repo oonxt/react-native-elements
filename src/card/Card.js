@@ -92,6 +92,7 @@ const Card = props => {
               >
                 {featuredTitle}
               </Text>}
+              {icon && <Icon {...icon} />}
               {featuredSubtitle !== null &&
               <Text
                 style={[
@@ -101,7 +102,6 @@ const Card = props => {
               >
                 {featuredSubtitle}
               </Text>}
-              {icon && <Icon {...icon} />}
             </View>
           </Image>
           <View style={[{ padding: 10 }, wrapperStyle && wrapperStyle]}>
