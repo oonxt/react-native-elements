@@ -11,6 +11,7 @@ import fonts from '../config/fonts';
 import colors from '../config/colors';
 import Text from '../text/Text';
 import Divider from '../divider/Divider';
+import Icon from '../icons/Icon';
 import normalize from '../helpers/normalizeText';
 import ViewPropTypes from '../config/ViewPropTypes';
 import BackgroundImage from '../config/BackgroundImage';
@@ -33,6 +34,7 @@ const Card = props => {
     dividerStyle,
     image,
     imageStyle,
+    icon,
     fontFamily,
     ...attributes
   } = props;
@@ -54,57 +56,58 @@ const Card = props => {
         ]}
       >
         {title !== null &&
-          <View>
-            <Text
-              style={[
-                styles.cardTitle,
-                image && styles.imageCardTitle,
-                titleStyle && titleStyle,
-                fontFamily && { fontFamily },
-              ]}
-            >
-              {title}
-            </Text>
-            {!image &&
-              <Divider
-                style={[styles.divider, dividerStyle && dividerStyle]}
-              />}
-          </View>}
+        <View>
+          <Text
+            style={[
+              styles.cardTitle,
+              image && styles.imageCardTitle,
+              titleStyle && titleStyle,
+              fontFamily && { fontFamily },
+            ]}
+          >
+            {title}
+          </Text>
+          {!image &&
+          <Divider
+            style={[styles.divider, dividerStyle && dividerStyle]}
+          />}
+        </View>}
         {image &&
-          <View style={imageWrapperStyle && imageWrapperStyle}>
-            <Image
-              resizeMode="cover"
-              style={[{ width: null, height: 150 }, imageStyle && imageStyle]}
-              source={image}
-              {...attributes}
+        <View style={imageWrapperStyle && imageWrapperStyle}>
+          <Image
+            resizeMode="cover"
+            style={[{ width: null, height: 150 }, imageStyle && imageStyle]}
+            source={image}
+            {...attributes}
+          >
+            <View
+              style={[styles.overlayContainer, overlayStyle && overlayStyle]}
             >
-              <View
-                style={[styles.overlayContainer, overlayStyle && overlayStyle]}
+              {featuredTitle !== null &&
+              <Text
+                style={[
+                  styles.featuredTitle,
+                  featuredTitleStyle && featuredTitleStyle,
+                ]}
               >
-                {featuredTitle !== null &&
-                  <Text
-                    style={[
-                      styles.featuredTitle,
-                      featuredTitleStyle && featuredTitleStyle,
-                    ]}
-                  >
-                    {featuredTitle}
-                  </Text>}
-                {featuredSubtitle !== null &&
-                  <Text
-                    style={[
-                      styles.featuredSubtitle,
-                      featuredSubtitleStyle && featuredSubtitleStyle,
-                    ]}
-                  >
-                    {featuredSubtitle}
-                  </Text>}
-              </View>
-            </Image>
-            <View style={[{ padding: 10 }, wrapperStyle && wrapperStyle]}>
-              {children}
+                {featuredTitle}
+              </Text>}
+              {featuredSubtitle !== null &&
+              <Text
+                style={[
+                  styles.featuredSubtitle,
+                  featuredSubtitleStyle && featuredSubtitleStyle,
+                ]}
+              >
+                {featuredSubtitle}
+              </Text>}
+              {icon && <Icon {...icon} />}
             </View>
-          </View>}
+          </Image>
+          <View style={[{ padding: 10 }, wrapperStyle && wrapperStyle]}>
+            {children}
+          </View>
+        </View>}
         {!image && children}
       </View>
     </View>
@@ -128,6 +131,7 @@ Card.propTypes = {
   image: Image.propTypes.source,
   imageStyle: ViewPropTypes.style,
   imageWrapperStyle: ViewPropTypes.style,
+  icon: PropTypes.object,
   fontFamily: PropTypes.string,
 };
 
