@@ -55,7 +55,7 @@ const Card = props => {
           flexDirection && { flexDirection },
         ]}
       >
-        {title !== null &&
+        {title &&
         <View>
           <Text
             style={[
